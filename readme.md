@@ -1,1 +1,1 @@
-# Набор bash скриптов
+# bash scripts collection
