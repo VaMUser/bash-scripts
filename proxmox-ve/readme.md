@@ -60,18 +60,15 @@
 Установка:
 
     install -m 0755 remove_nag.sh /usr/local/sbin/remove_nag.sh
-    /usr/local/sbin/remove_nag.sh
 
 
 ## Автозапуск после обновлений (APT hook)
 
-Создать файл:
+Создать файл для apt:
 
-    /etc/apt/apt.conf.d/99-remove-nag
-
-С содержимым:
-
-    DPkg::Post-Invoke { "/usr/local/sbin/remove_nag.sh >/dev/null 2>&1 || true"; };
+   install -m 0644 /dev/stdin /etc/apt/apt.conf.d/99-remove-nag <<'EOF'
+   DPkg::Post-Invoke { "/usr/local/sbin/remove_nag.sh >/dev/null 2>&1 || true"; };
+   EOF
 
 После этого скрипт будет автоматически запускаться
 после каждого apt upgrade / full-upgrade.
