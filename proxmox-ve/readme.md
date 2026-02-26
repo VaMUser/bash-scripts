@@ -66,9 +66,9 @@
 
 Создать файл для apt:
 
-   install -m 0644 /dev/stdin /etc/apt/apt.conf.d/99-remove-nag <<'EOF'
-   DPkg::Post-Invoke { "/usr/local/sbin/remove_nag.sh >/dev/null 2>&1 || true"; };
-   EOF
+    install -m 0644 /dev/stdin /etc/apt/apt.conf.d/99-remove-nag <<'EOF'
+    DPkg::Post-Invoke { "/usr/local/sbin/remove_nag.sh >/dev/null 2>&1 || true"; };
+    EOF
 
 После этого скрипт будет автоматически запускаться
 после каждого apt upgrade / full-upgrade.
